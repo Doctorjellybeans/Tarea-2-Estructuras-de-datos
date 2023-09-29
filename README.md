@@ -36,6 +36,6 @@ Para eso se diseño un menu con las siguientes funcionalidades:
 
 Pasos para ejecutar el programa:
   1. Acceda al link adjuntado en el entregable
-     https://replit.com/join/vfugjeakss-doctorjellybean
+     https://replit.com/join/hkjvponzsa-doctorjellybean
   3. Haga click en el boton Run
   4. En caso de que no funcione, utilice el comando "sh test.sh" en la Shell
