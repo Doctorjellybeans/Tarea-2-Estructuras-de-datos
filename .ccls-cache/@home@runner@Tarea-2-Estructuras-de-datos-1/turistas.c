@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+// Funcion para crear una lista (turistas)
 ListaTuristas *crearListaTuristas() {
   ListaTuristas *nuevaLista = (ListaTuristas *)malloc(sizeof(ListaTuristas));
   if (nuevaLista != NULL) {

@@ -124,18 +124,3 @@ int main() {
   }
   return 0;
 }
-/* 
-int main() {
-    char input[100];  // Declaramos un arreglo para almacenar la entrada
-    printf("Introduce una cadena con espacios: ");
-    fgets(input, sizeof(input), stdin);  // Leemos la entrada incluyendo espacios
-
-    // Utilizamos sscanf para analizar la cadena
-    char parsedString[100];
-    if (sscanf(input, "%[^\n]", parsedString) == 1) {
-        printf("Cadena analizada: %s\n", parsedString);
-    } else {
-        printf("Error al analizar la cadena.\n");
-    }
-
-    return 0;*/

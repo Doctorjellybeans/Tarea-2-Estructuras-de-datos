@@ -90,6 +90,7 @@ void redimensionarTabla(TablaHash **tabla) {
   *tabla = nuevaTabla;
 }
 
+// Funcion para registrar los puntos de interes
 void registrarPuntoDeInteres(TablaHash **tabla, char *nombre, char *tipo,
                              char *direccion, char *horario,
                              char *descripcion) {

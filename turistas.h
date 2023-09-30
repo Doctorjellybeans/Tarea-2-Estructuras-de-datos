@@ -33,8 +33,6 @@ void agregarLugarFavorito(ListaTuristas *lista, char *pasaporte,
 
 void mostrarTuristasPorPais(ListaTuristas *lista, char *paisBuscado);
 
-char *leerValidarTuristas(int tipo);
-
 
 
 #endif

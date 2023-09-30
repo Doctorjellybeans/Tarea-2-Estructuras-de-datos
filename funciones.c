@@ -24,7 +24,7 @@ void exportarTurista(ListaTuristas *lista, const char *Nombre_archivoTuris) {
 
     fprintf(turistafile, "%s,%s,%s", current->pasaporte, current->nombre,
             current->pais);
-    LugarFavorito *currentlugar = current->lugaresFavoritos;
+    LugarFavorito *currentlugar = current->lugaresFavoritos->head;
     while (currentlugar != NULL) {
 
       fprintf(turistafile, "%s", currentlugar->lugar);
@@ -41,7 +41,8 @@ void exportarTurista(ListaTuristas *lista, const char *Nombre_archivoTuris) {
   fclose(turistafile);
 }
 
-void exportarpuntos(TablaHash **tabla,const char *nombre_archivoPts){
+// Funcion para exportar Ubicaciones
+void exportarPuntos(TablaHash **tabla,const char *nombre_archivoPts){
   FILE *puntosIntfile=fopen(nombre_archivoPts,"w");
   if(puntosIntfile==NULL){
     return;
@@ -60,49 +61,7 @@ void exportarpuntos(TablaHash **tabla,const char *nombre_archivoPts){
   fclose(puntosIntfile);
 }
 
-/*void importarTuristas(ListaTuristas *lista) {
-  if (lista == NULL) {
-    return;
-  }
-  char Nombre_archivoTuris[50];
-  printf("Ingrese el nombre del archivo del archivo de turistas:\n ");
-  scanf("%[^\n]", Nombre_archivoTuris);
-  getchar();
-  FILE *listaturista = fopen(Nombre_archivoTuris, "r");
-  if (listaturista == NULL) {
-    printf("error al abrir el archivo");
-    return;
-  }
-  char header[1024];
-  fgets(header, sizeof(header), listaturista);
-
-  while (fgets(header, sizeof(header), listaturista)) {
-    char Pasaporte[50];
-    char Nombre[50];
-    char Pais[50];
-    char Lugaresfav[150];
-    sscanf(header, "%[^,],%[^,],%[^,],%[^\n]", Pasaporte, Nombre, Pais,
-           Lugaresfav);
-
-    char *token = strtok(Lugaresfav, ";"); // a
-
-    while (token != NULL) {
-      char LugarFav[50];
-      sscanf(token, "%49[^\n]", LugarFav);
-      agregarLugarFavorito(lista, Pasaporte, LugarFav);
-      token = strtok(NULL, ";");
-      printf("Lugaresfav: %s\n", LugarFav);
-    }
-
-    printf("Pasaporte: %s\n", Pasaporte);
-    printf("Nombre: %s\n", Nombre);
-    printf("Pais: %s\n", Pais);
-
-    registrarTurista(lista, Pasaporte, Nombre, Pais);
-  }
-  fclose(listaturista);
-}*/
-
+// Funcion para importar turistas
 void importarTuristas(ListaTuristas *lista) {
   if (lista == NULL) {
     return;
@@ -142,6 +101,7 @@ void importarTuristas(ListaTuristas *lista) {
   fclose(listaturista);
 }
 
+// funcion para importar ubicaciones
 void importarUbicaciones(TablaHash **tabla) {
   if (tabla == NULL) {
     return;
@@ -172,69 +132,3 @@ void importarUbicaciones(TablaHash **tabla) {
   fclose(ArchivoPts);
   printf("FINALIZADO\n");
 }
-
-// Funcion importar archivo .CSV
-/*void import_csv(ListaTuristas *lista, TablaHash **tabla,
-                const char *Nombre_archivoTuris, const char *Nombre_archivoPts)
-{ if (lista == NULL || tabla == NULL) { printf("no existe tabla o lista");
-  }
-  printf("ENTRO A LA FUNCION\n");
-
-  FILE *listaturista = fopen(Nombre_archivoTuris, "r");
-  if (listaturista == NULL) {
-    printf("error al abrir el archivo");
-    return;
-  }
-  char header[1024];
-  fgets(header, sizeof(header), listaturista);
-
-  // Turistas
-  while (fgets(header, sizeof(header), listaturista)) {
-    char Pasaporte[50];
-    char Nombre[50];
-    char Pais[50];
-    char Lugaresfav[150];
-    sscanf(header, "%[^,],%[^,],%[^,],%[^\n]", Pasaporte, Nombre, Pais,
-           Lugaresfav);
-
-    char *token = strtok(Lugaresfav, ";"); // a
-
-    while (token != NULL) {
-      char LugarFav[50];
-      sscanf(token, "%49[^\n]", LugarFav);
-      agregarLugarFavorito(lista, Pasaporte, LugarFav);
-      token = strtok(NULL, ";");
-      printf("Lugaresfav: %s\n", LugarFav);
-
-    }
-
-    printf("Pasaporte: %s\n", Pasaporte);
-    printf("Nombre: %s\n", Nombre);
-    printf("Pais: %s\n", Pais);
-
-    registrarTurista(lista, Pasaporte, Nombre, Pais);
-  }
-  fclose(listaturista);
-
-  // Puntos de interes
-  FILE *ArchivoPts = fopen(Nombre_archivoPts, "r");
-  if (ArchivoPts == NULL) {
-    printf("error al abrir el archivo");
-    return;
-  }
-  fgets(header, sizeof(header), ArchivoPts);
-  while (fgets(header, sizeof(header), ArchivoPts)) {
-    char nombre[50];
-    char tipo[50];
-    char direccion[50];
-    char horario[50];
-    char descripcion[50];
-    sscanf(header, "%[^,],%[^,],%[^,],%[^,],%[^\n]", nombre, tipo, direccion,
-           horario, descripcion);
-    registrarPuntoDeInteres(tabla, nombre, tipo, direccion, horario,
-                            descripcion);
-  }
-  fclose(ArchivoPts);
-  printf("FINALIZADO\n");
-}
-*/

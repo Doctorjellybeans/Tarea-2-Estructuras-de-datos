@@ -5,13 +5,12 @@
 
 void exportcsv(char Nombre_archivoTuris, char Nombre_archivoPts);
 
-/*void import_csv(ListaTuristas *lista, TablaHash **tabla,
-                const char *Nombre_archivoTuris,
-                const char *Nombre_archivoPts);*/
-
 void importarTuristas(ListaTuristas *lista);
+
 void importarUbicaciones(TablaHash **tabla);
+
 void exportarTurista(ListaTuristas *lista, const char *Nombre_archivoTuris);
+
 void exportarpuntos(TablaHash **tabla,const char *nombre_archivoPts);
 
 #endif

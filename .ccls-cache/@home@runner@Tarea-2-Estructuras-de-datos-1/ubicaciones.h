@@ -42,6 +42,4 @@ void eliminarPuntosDeInteres(TablaHash **tabla, char *nombre);
 
 void mostrarPuntosPorTipo(TablaHash *tabla, char *tipo);
 
-char* leerValidarUbicaciones(int tipo);
-
 #endif
